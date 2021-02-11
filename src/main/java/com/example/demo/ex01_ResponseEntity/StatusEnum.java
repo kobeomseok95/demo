@@ -1,4 +1,4 @@
-package com.example.demo.responseEntityExample;
+package com.example.demo.ex01_ResponseEntity;
 
 public enum StatusEnum {
     OK(200, "OK"),

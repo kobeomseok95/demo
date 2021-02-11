@@ -1,4 +1,4 @@
-package com.example.demo.responseEntityExample;
+package com.example.demo.ex01_ResponseEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
