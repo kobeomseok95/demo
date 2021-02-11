@@ -2,8 +2,10 @@ package com.example.demo.ex02_EventExample;
 
 import com.example.demo.ex02_EventExample.event.EmailSender;
 import com.example.demo.ex02_EventExample.event.KakaotalkSender;
+import com.example.demo.ex02_EventExample.event.OrderEvent;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -11,8 +13,7 @@ import org.springframework.stereotype.Service;
 public class OrderService {
 
     private final ModelMapper modelMapper;
-    private final EmailSender emailSender;
-    private final KakaotalkSender kakaotalkSender;
+    private final ApplicationEventPublisher eventPublisher;
 
     public OrderResponseDto order(OrderRequestDto request) {
         Order order = doOrder(request);
@@ -21,8 +22,7 @@ public class OrderService {
             throw new IllegalStateException("주문 실패");
         }
 
-        emailSender.sendNotification(order);
-        kakaotalkSender.sendNotification(order);
+        eventPublisher.publishEvent(new OrderEvent(order));
 
         return modelMapper.map(order, OrderResponseDto.class);
     }
