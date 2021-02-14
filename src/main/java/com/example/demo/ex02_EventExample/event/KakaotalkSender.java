@@ -3,6 +3,7 @@ package com.example.demo.ex02_EventExample.event;
 import com.example.demo.ex02_EventExample.Order;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.event.TransactionalEventListener;
 
 @Component
 public class KakaotalkSender implements OrderNotifier {

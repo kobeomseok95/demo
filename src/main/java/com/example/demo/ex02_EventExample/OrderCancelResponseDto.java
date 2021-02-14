@@ -10,7 +10,7 @@ import lombok.*;
 public class OrderCancelResponseDto {
 
     private String orderUser;
-    private String cancelMessage;
+    private final String cancelMessage = "주문이 취소되었습니다.";
 
     public void printMessage() {
         System.out.println(orderUser + cancelMessage);
