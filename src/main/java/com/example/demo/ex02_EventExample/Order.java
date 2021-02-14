@@ -3,7 +3,7 @@ package com.example.demo.ex02_EventExample;
 import lombok.*;
 
 @Getter
-@Builder(access = AccessLevel.PROTECTED)
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Order {
