@@ -1,6 +1,5 @@
 package com.example.demo.ex02_EventExample;
 
-
 import lombok.*;
 
 @Getter
@@ -8,7 +7,7 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class OrderRequestDto {
+public class OrderCancelRequestDto {
 
     private String orderUser;
     private String product;

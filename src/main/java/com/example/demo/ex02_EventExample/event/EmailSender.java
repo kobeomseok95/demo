@@ -8,11 +8,20 @@ import org.springframework.stereotype.Component;
 public class EmailSender implements OrderNotifier {
 
     @Override
-    @EventListener
+    @org.springframework.core.annotation.Order(2)
+    @EventListener(condition = "#orderEvent.sendEmail")
     public void sendNotification(OrderEvent orderEvent) {
         Order order = orderEvent.getOrder();
         System.out.println("Email : " + order.getOrderUser() + "님은 " +
                 order.getProduct() + "를 주문하셨습니다. 가격은 " +
                 order.getPrice() + "원 입니다.");
+    }
+
+    @Override
+    @org.springframework.core.annotation.Order(2)
+    @EventListener(condition = "#orderCancelEvent.sendEmail")
+    public void sendCancelNotification(OrderCancelEvent orderCancelEvent) {
+        Order order = orderCancelEvent.getOrder();
+        System.out.println("Email : " + order.getOrderUser() + orderCancelEvent.getMessage());
     }
 }
